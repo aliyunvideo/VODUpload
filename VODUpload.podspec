@@ -17,16 +17,18 @@ Pod::Spec.new do |s|
 
   s.name         = "VODUpload"
   s.version      = "0.0.1"
-  s.summary      = "A short description of VODUpload."
+  s.summary      = "aliyun video upload sdk"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = "aliyun video upload sdk based on oss"
+  s.description  = <<-DESC
+                   It's an SDK for aliyun video upload, which implement by Objective-C.
+                   DESC
 
-  s.homepage     = "http://www.alibabacloud.com"
+  s.homepage     = "https://www.aliyun.com/"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -37,8 +39,8 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  # s.license      = "MIT"
+  s.license      = { :type => "Apache License, Version 2.0", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -63,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -89,7 +91,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
+  # s.source_files  = "Classes", "Classes/**/*.{h,m}"
   s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -124,6 +126,11 @@ Pod::Spec.new do |s|
   s.vendored_frameworks = "frameworks/VODUpload.framework"
 
   s.dependency 'AliyunOSSiOS'
+  s.dependency 'AliyunVideoCore'
+
+
+
+
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
