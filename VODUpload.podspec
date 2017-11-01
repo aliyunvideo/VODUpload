@@ -126,7 +126,7 @@ Pod::Spec.new do |s|
   s.vendored_frameworks = "frameworks/VODUpload.framework"
 
   s.dependency 'AliyunOSSiOS'
-  s.dependency 'AliyunVideoCore'
+  s.dependency 'AliyunVideoCore', "~> 1.0.0"
 
 
 
