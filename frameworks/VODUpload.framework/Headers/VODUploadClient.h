@@ -10,6 +10,15 @@
 #import "VODUploadModel.h"
 
 @interface VODUploadClient : NSObject
+/**
+ Max retry count
+ */
+@property (nonatomic, assign) uint32_t maxRetryCount;
+
+/**
+ Sets single object download's max time
+ */
+@property (nonatomic, assign) NSTimeInterval timeoutIntervalForRequest;
 
 /**
  无配置上传
