@@ -21,14 +21,15 @@ else:
         wf.writelines(lines)
         wf.close
 
-    commit = 'git commit -m release'
     tag = "git tag -a "+version+" -m '"+version+"'" 
     trunk = 'pod trunk push ' + spec
 
     os.system('git add .')
     os.system('git commit -m release')
     os.system('git push')
-    # os.system('$tag')
+    os.system(tag)
+    os.system('git push --tags')
+    os.system(trunk)
     
     
 
