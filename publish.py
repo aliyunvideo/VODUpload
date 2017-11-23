@@ -13,7 +13,7 @@ else:
         lines = f.readlines()
         for i in range(len(lines)):
             if lines[i].find('s.version      =') != -1:
-                lines[i] = "  s.version      = " + version + "\n"
+                lines[i] = "  s.version      = \"" + version + "\"" + "\n"
         f.close
     
     
