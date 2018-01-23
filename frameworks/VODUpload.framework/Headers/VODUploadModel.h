@@ -70,7 +70,14 @@ typedef NS_ENUM(NSInteger, VODStatus) {
 
 @end
 
+
+@interface VodUploadResult: NSObject
+@property (nonatomic, copy) NSString* videoId;
+@property (nonatomic, copy) NSString* imageUrl;
+@end
+
 typedef void (^OnUploadSucceedListener) (UploadFileInfo* fileInfo);
+typedef void (^OnUploadFinishedListener) (UploadFileInfo* fileInfo, VodUploadResult* result);
 typedef void (^OnUploadFailedListener) (UploadFileInfo* fileInfo, NSString *code, NSString * message);
 typedef void (^OnUploadProgressListener) (UploadFileInfo* fileInfo, long uploadedSize, long totalSize);
 typedef void (^OnUploadTokenExpiredListener) ();
@@ -80,7 +87,9 @@ typedef void (^OnUploadStartedListener) (UploadFileInfo* fileInfo);
 
 @interface VODUploadListener : NSObject
 
-@property (nonatomic, copy) OnUploadSucceedListener success;
+@property (nonatomic, copy) OnUploadSucceedListener success
+__attribute__((deprecated("", "use OnUploadFinishedListener to replace")));
+@property (nonatomic, copy) OnUploadFinishedListener finish;
 @property (nonatomic, copy) OnUploadFailedListener failure;
 @property (nonatomic, copy) OnUploadProgressListener progress;
 @property (nonatomic, copy) OnUploadTokenExpiredListener expire;

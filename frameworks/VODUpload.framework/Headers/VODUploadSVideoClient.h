@@ -35,6 +35,10 @@
 
 @property (nonatomic, assign) NSTimeInterval timeoutIntervalForRequest;
 
+@property (nonatomic, copy) NSString * recordDirectoryPath;
+
+@property (nonatomic, assign) NSInteger uploadPartSize;
+
 - (BOOL)uploadWithVideoPath:(NSString *)videoPath
                   imagePath:(NSString *)imagePath
                  svideoInfo:(VodSVideoInfo *)svideoInfo

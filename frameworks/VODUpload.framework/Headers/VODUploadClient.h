@@ -10,6 +10,13 @@
 #import "VODUploadModel.h"
 
 @interface VODUploadClient : NSObject
+
+
+/**
+ transcode default value is YES
+ */
+@property (nonatomic, assign) BOOL transcode;
+
 /**
  Max retry count
  */
@@ -21,15 +28,30 @@
 @property (nonatomic, assign) NSTimeInterval timeoutIntervalForRequest;
 
 /**
+ directory path about create record uploadId file
+ */
+@property (nonatomic, copy) NSString * recordDirectoryPath;
+
+/**
+ size of upload part, default value is 1024 * 1024
+*/
+@property (nonatomic, assign) NSInteger uploadPartSize;
+
+/**
+ requestId
+ */
+@property (nonatomic, assign) NSString *requestId;
+
+/**
  无配置上传
  */
-- (BOOL)        init:(VODUploadListener *) listener;
+- (BOOL)        init:(VODUploadListener *) listener __attribute__((deprecated("", "use STS init method instead")));
 /**
  AK方式配置上传
  */
 - (BOOL)        init:(NSString *)accessKeyId
      accessKeySecret:(NSString *)accessKeySecret
-            listener:(VODUploadListener *) listener;
+            listener:(VODUploadListener *) listener __attribute__((deprecated("", "use STS init method instead")));
 
 /**
  STS授权方式配置上传
@@ -112,7 +134,7 @@
 /**
  使用Token恢复上传
  */
-- (BOOL)resumeWithAuth:(NSString *)uploadAuth;
+- (BOOL)resumeWithAuth:(NSString *)uploadAuth __attribute__((deprecated("", "use resumeWithToken:accessKeySecret:secretToken:expireTime: to replace")));
 
 /**
  使用Token恢复上传
@@ -127,7 +149,7 @@
  */
 - (BOOL)setUploadAuthAndAddress:(UploadFileInfo *)uploadFileInfo
            uploadAuth:(NSString *)uploadAuth
-        uploadAddress:(NSString *)uploadAddress;
+        uploadAddress:(NSString *)uploadAddress __attribute__((deprecated("", "not recommanded")));
 
 @end
 

@@ -13,4 +13,7 @@
 @property (nonatomic, strong) NSString* tags;
 @property (nonatomic, strong) NSString* desc;
 @property (nonatomic, strong) NSNumber* cateId;
+@property (nonatomic, assign) BOOL isProcess;
+@property (nonatomic, assign) BOOL isShowWaterMark;
+@property (nonatomic, assign) NSNumber* priority;
 @end
