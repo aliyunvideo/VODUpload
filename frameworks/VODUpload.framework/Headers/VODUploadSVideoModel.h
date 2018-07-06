@@ -9,11 +9,20 @@
 #import <Foundation/Foundation.h>
 
 @interface VodSVideoInfo : NSObject
-@property (nonatomic, strong) NSString* title;
-@property (nonatomic, strong) NSString* tags;
-@property (nonatomic, strong) NSString* desc;
+@property (nonatomic, copy) NSString* title;
+@property (nonatomic, copy) NSString* tags;
+@property (nonatomic, copy) NSString* desc;
 @property (nonatomic, strong) NSNumber* cateId;
 @property (nonatomic, assign) BOOL isProcess;
 @property (nonatomic, assign) BOOL isShowWaterMark;
-@property (nonatomic, assign) NSNumber* priority;
+@property (nonatomic, strong) NSNumber* priority;
+@property (nonatomic, copy) NSString* storageLocation;
+@property (nonatomic, copy) NSString* templateGroupId;
+@end
+
+@interface VodSVideoUploadResult: NSObject
+@property (nonatomic, copy) NSString* videoId;
+@property (nonatomic, copy) NSString* imageUrl;
+@property (nonatomic, copy) NSString* bucket;
+@property (nonatomic, copy) NSString* endpoint;
 @end

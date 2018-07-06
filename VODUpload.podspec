@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "VODUpload"
-  s.version      = "1.3.0"
+  s.version      = "1.4.0"
   s.summary      = "aliyun video upload sdk"
 
   # This description is used to generate tags and improve search results.
@@ -118,7 +118,7 @@ Pod::Spec.new do |s|
   #
 
   # s.framework  = "SomeFramework"
-   s.frameworks = "SystemConfiguration", "MobileCoreServices"
+   s.frameworks = "SystemConfiguration", "MobileCoreServices", "CoreMedia", "AVFoundation"
 
    s.library   = "resolv"
   # s.libraries = "iconv", "xml2"
@@ -126,7 +126,6 @@ Pod::Spec.new do |s|
   s.vendored_frameworks = "frameworks/VODUpload.framework"
 
   s.dependency 'AliyunOSSiOS'
-  s.dependency 'AliyunVideoCore', "~> 1.0.0"
 
 
 

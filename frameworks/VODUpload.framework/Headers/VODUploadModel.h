@@ -40,16 +40,17 @@ typedef NS_ENUM(NSInteger, VODStatus) {
 
 @interface VodInfo : NSObject
 
-@property (nonatomic, strong) NSString* title;
-@property (nonatomic, strong) NSString* tags;
-@property (nonatomic, strong) NSString* desc;
+@property (nonatomic, copy) NSString* title;
+@property (nonatomic, copy) NSString* tags;
+@property (nonatomic, copy) NSString* desc;
 @property (nonatomic, strong) NSNumber* cateId;
-@property (nonatomic, strong) NSString* userData;
-@property (nonatomic, strong) NSString* coverUrl;
+@property (nonatomic, copy) NSString* userData;
+@property (nonatomic, copy) NSString* coverUrl;
 @property (nonatomic, assign) BOOL isProcess;
 @property (nonatomic, assign) BOOL isShowWaterMark;
-@property (nonatomic, assign) NSNumber* priority;
-
+@property (nonatomic, strong) NSNumber* priority;
+@property (nonatomic, copy) NSString* storageLocation;
+@property (nonatomic, copy) NSString* templateGroupId;
 /**
  获取json字符串
  */
@@ -61,10 +62,10 @@ typedef NS_ENUM(NSInteger, VODStatus) {
 
 @interface UploadFileInfo : NSObject
 
-@property (nonatomic, strong) NSString* filePath;
-@property (nonatomic, strong) NSString* endpoint;
-@property (nonatomic, strong) NSString* bucket;
-@property (nonatomic, strong) NSString* object;
+@property (nonatomic, copy) NSString* filePath;
+@property (nonatomic, copy) NSString* endpoint;
+@property (nonatomic, copy) NSString* bucket;
+@property (nonatomic, copy) NSString* object;
 @property (nonatomic, strong) VodInfo* vodInfo;
 @property VODUploadFileStatus state;
 
@@ -74,6 +75,8 @@ typedef NS_ENUM(NSInteger, VODStatus) {
 @interface VodUploadResult: NSObject
 @property (nonatomic, copy) NSString* videoId;
 @property (nonatomic, copy) NSString* imageUrl;
+@property (nonatomic, copy) NSString* bucket;
+@property (nonatomic, copy) NSString* endpoint;
 @end
 
 typedef void (^OnUploadSucceedListener) (UploadFileInfo* fileInfo);

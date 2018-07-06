@@ -11,7 +11,7 @@
 
 @protocol VODUploadSVideoClientDelegate <NSObject>
 
-- (void)uploadSuccessWithVid:(NSString *)vid imageUrl:(NSString *)imageUrl;
+- (void)uploadSuccessWithResult:(VodSVideoUploadResult *)result;
 
 - (void)uploadFailedWithCode:(NSString *)code message:(NSString *)message;
 
@@ -23,20 +23,39 @@
 
 - (void)uploadRetryResume;
 
+@optional
+- (void)uploadSuccessWithVid:(NSString *)vid imageUrl:(NSString *)imageUrl __deprecated_msg("using uploadSuccessWithResult: instead");
+
 @end
 
 @interface VODUploadSVideoClient : NSObject
 
 @property (nonatomic, weak) id<VODUploadSVideoClientDelegate> delegate;
 
+/**
+ transcode default value is YES
+ */
 @property (nonatomic, assign) BOOL transcode;
 
+/**
+ Max retry count, default value is INT_MAX
+ Client will retry automatically in every 2 seconds when network is unavailable
+ */
 @property (nonatomic, assign) uint32_t maxRetryCount;
 
+/**
+ Sets single object download's max time
+ */
 @property (nonatomic, assign) NSTimeInterval timeoutIntervalForRequest;
 
+/**
+ directory path about create record uploadId file
+ */
 @property (nonatomic, copy) NSString * recordDirectoryPath;
 
+/**
+ size of upload part, default value is 1024 * 1024
+ */
 @property (nonatomic, assign) NSInteger uploadPartSize;
 
 - (BOOL)uploadWithVideoPath:(NSString *)videoPath

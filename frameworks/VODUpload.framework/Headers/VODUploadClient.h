@@ -18,7 +18,8 @@
 @property (nonatomic, assign) BOOL transcode;
 
 /**
- Max retry count
+ Max retry count, default value is INT_MAX
+ Client will retry automatically in every 2 seconds when network is unavailable
  */
 @property (nonatomic, assign) uint32_t maxRetryCount;
 
