@@ -55,14 +55,31 @@
 
 /**
  上传地址和凭证方式初始化
+ @deprecated 使用`setListener:`方法
+ */
+- (BOOL)        init:(VODUploadListener *) listener __attribute__((deprecated("This method is conflict with swift initialization method, use `setListener:` instead.")));
+
+/**
+ 上传地址和凭证方式初始化
  
  */
-- (BOOL)        init:(VODUploadListener *) listener;
+- (BOOL)        setListener:(VODUploadListener *) listener;
 
 /**
  STS授权方式初始化
+ @deprecated 使用`setKeyId: accessKeySecret: secretToken: expireTime: listener:`方法
  */
 - (BOOL)        init:(NSString *)accessKeyId
+     accessKeySecret:(NSString *)accessKeySecret
+         secretToken:(NSString *)secretToken
+          expireTime:(NSString *)expireTime
+            listener:(VODUploadListener *) listener  __attribute__((deprecated("This method is conflict with swift initialization method, use `setKeyId: accessKeySecret: secretToken: expireTime: listener:` instead.")));
+
+/**
+ STS授权方式初始化
+ 
+ */
+- (BOOL)    setKeyId:(NSString *)accessKeyId
      accessKeySecret:(NSString *)accessKeySecret
          secretToken:(NSString *)secretToken
           expireTime:(NSString *)expireTime
@@ -73,6 +90,14 @@
  端上使用AK方式不安全，不建议使用
  */
 - (BOOL)        init:(NSString *)accessKeyId
+     accessKeySecret:(NSString *)accessKeySecret
+            listener:(VODUploadListener *) listener __attribute__((deprecated("", "Not recommended.")));
+
+/**
+ AK方式初始化
+ 端上使用AK方式不安全，不建议使用
+ */
+- (BOOL)    setKeyId:(NSString *)accessKeyId
      accessKeySecret:(NSString *)accessKeySecret
             listener:(VODUploadListener *) listener __attribute__((deprecated("", "Not recommended.")));
 
