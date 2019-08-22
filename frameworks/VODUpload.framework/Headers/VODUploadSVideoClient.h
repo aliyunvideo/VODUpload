@@ -28,7 +28,12 @@
 
 @end
 
-@interface VODUploadSVideoClient : NSObject
+/**
+ 短视频场景上传
+ 不支持点播凭证方式，已废弃
+ 推荐使用VODUploadClient点播凭证方式上传
+ */
+__deprecated_msg("已废弃") @interface VODUploadSVideoClient : NSObject
 
 @property (nonatomic, weak) id<VODUploadSVideoClientDelegate> delegate;
 
@@ -67,6 +72,16 @@
  vod region, defalut value is "cn-shanghai"
  */
 @property (nonatomic, copy) NSString *region;
+
+/**
+ App id
+ */
+@property (nonatomic, copy) NSString* appId;
+
+/**
+ workflow id
+ */
+@property (nonatomic, copy) NSString* workflowId;
 
 /**
  开始上传
