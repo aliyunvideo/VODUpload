@@ -64,36 +64,36 @@
 @property (nonatomic, copy) NSString* workflowId;
 
 /**
- 上传地址和凭证方式初始化设置listener
- 
- */
-- (BOOL)        setListener:(VODUploadListener *) listener;
-
-/**
- 上传地址和凭证方式初始化设置listener
+ 上传地址和凭证方式初始化
  @deprecated 使用`setListener:`方法
  */
 - (BOOL)        init:(VODUploadListener *) listener __attribute__((deprecated("This method is conflict with swift initialization method, use `setListener:` instead.")));
 
 /**
+ 上传地址和凭证方式初始化
+ 
+ */
+- (BOOL)        setListener:(VODUploadListener *) listener;
+
+/**
  STS授权方式初始化
- @deprecated 推荐使用点播凭证方式上传
+ @deprecated 使用`setKeyId: accessKeySecret: secretToken: expireTime: listener:`方法
  */
 - (BOOL)        init:(NSString *)accessKeyId
      accessKeySecret:(NSString *)accessKeySecret
          secretToken:(NSString *)secretToken
           expireTime:(NSString *)expireTime
-            listener:(VODUploadListener *) listener  __attribute__((deprecated("Not recommended.")));
+            listener:(VODUploadListener *) listener  __attribute__((deprecated("This method is conflict with swift initialization method, use `setKeyId: accessKeySecret: secretToken: expireTime: listener:` instead.")));
 
 /**
  STS授权方式初始化
- @deprecated 推荐使用点播凭证方式上传
+ 
  */
 - (BOOL)    setKeyId:(NSString *)accessKeyId
      accessKeySecret:(NSString *)accessKeySecret
          secretToken:(NSString *)secretToken
           expireTime:(NSString *)expireTime
-            listener:(VODUploadListener *) listener __attribute__((deprecated("Not recommended.")));
+            listener:(VODUploadListener *) listener;
 
 /**
  AK方式初始化
@@ -101,7 +101,7 @@
  */
 - (BOOL)        init:(NSString *)accessKeyId
      accessKeySecret:(NSString *)accessKeySecret
-            listener:(VODUploadListener *) listener __attribute__((deprecated("Not recommended.")));
+            listener:(VODUploadListener *) listener __attribute__((deprecated("", "Not recommended.")));
 
 /**
  AK方式初始化
@@ -109,7 +109,7 @@
  */
 - (BOOL)    setKeyId:(NSString *)accessKeyId
      accessKeySecret:(NSString *)accessKeySecret
-            listener:(VODUploadListener *) listener __attribute__((deprecated("Not recommended.")));
+            listener:(VODUploadListener *) listener __attribute__((deprecated("", "Not recommended.")));
 
 /**
  添加视频上传

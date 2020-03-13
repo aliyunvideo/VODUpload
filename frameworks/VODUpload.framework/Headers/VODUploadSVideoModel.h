@@ -18,6 +18,9 @@
 //分类id
 @property (nonatomic, strong) NSNumber* cateId;
 
+// 设置自定义数据
+@property (nonatomic, copy) NSString* userData;
+
 @property (nonatomic, assign) BOOL isProcess;
 @property (nonatomic, assign) BOOL isShowWaterMark;
 @property (nonatomic, strong) NSNumber* priority;

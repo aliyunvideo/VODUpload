@@ -28,10 +28,11 @@
 
 @end
 
+
 /**
- 短视频场景上传
+ 图片/视频同时上传
  不支持点播凭证方式，已废弃
- 推荐使用VODUploadClient点播凭证方式上传
+ 推荐使用VODUploadClient点播凭证方式分别上传图片和视频
  */
 __deprecated_msg("已废弃") @interface VODUploadSVideoClient : NSObject
 
