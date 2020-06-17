@@ -85,6 +85,12 @@ __deprecated_msg("已废弃") @interface VODUploadSVideoClient : NSObject
 @property (nonatomic, copy) NSString* workflowId;
 
 /**
+ report enabled
+ */
+@property (nonatomic, assign) BOOL reportEnabled;
+
+
+/**
  开始上传
 
  @param videoPath 视频文件路径

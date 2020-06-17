@@ -46,7 +46,7 @@
 /**
  requestId
  */
-@property (nonatomic, assign) NSString *requestId;
+@property (nonatomic, copy) NSString *requestId;
 
 /**
  vod region, defalut value is "cn-shanghai"
@@ -62,6 +62,11 @@
  workflow id
  */
 @property (nonatomic, copy) NSString* workflowId;
+
+/**
+ report enabled
+ */
+@property (nonatomic, assign) BOOL reportEnabled;
 
 /**
  上传地址和凭证方式初始化
