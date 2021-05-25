@@ -156,17 +156,17 @@ typedef void (^OnUploadProgressListener) (UploadFileInfo* fileInfo, long uploade
  上传地址和凭证方式上传需要调用resumeWithAuth:方法继续上传
  STS方式上传需要调用resumeWithToken:accessKeySecret:secretToken:expireTime:方法继续上传
  */
-typedef void (^OnUploadTokenExpiredListener) ();
+typedef void (^OnUploadTokenExpiredListener) (void);
 
 /**
  上传开始重试回调
  */
-typedef void (^OnUploadRertyListener) ();
+typedef void (^OnUploadRertyListener) (void);
 
 /**
  上传结束重试，继续上传回调
  */
-typedef void (^OnUploadRertyResumeListener) ();
+typedef void (^OnUploadRertyResumeListener) (void);
 
 /**
  开始上传回调
