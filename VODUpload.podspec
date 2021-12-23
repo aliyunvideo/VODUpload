@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "VODUpload"
-  s.version      = "1.6.1"
+  s.version      = "1.6.4"
   s.summary      = "aliyun video upload sdk"
 
   # This description is used to generate tags and improve search results.
