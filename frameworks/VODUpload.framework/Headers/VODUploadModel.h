@@ -96,6 +96,11 @@ typedef NS_ENUM(NSInteger, VODStatus) {
 @property (nonatomic, copy) NSString* templateGroupId;
 
 /**
+ 图片类型。仅对图片上传有效。取值：default, cover, 默认值：cover
+ */
+@property (nonatomic, copy) NSString* imageType;
+
+/**
  获取json字符串
  */
 - (NSString*)toJson;
