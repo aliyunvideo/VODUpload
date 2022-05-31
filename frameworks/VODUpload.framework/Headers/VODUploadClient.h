@@ -123,6 +123,11 @@
         vodInfo:(VodInfo *)vodInfo;
 
 /**
+ 添加流上传
+ */
+- (BOOL)addStreamFile:(UploadStreamFileInfo *)fileInfo;
+
+/**
  添加视频上传
  */
 - (BOOL)addFile:(NSString *)filePath

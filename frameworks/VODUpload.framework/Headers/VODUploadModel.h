@@ -110,16 +110,121 @@ typedef NS_ENUM(NSInteger, VODStatus) {
 
 
 @interface UploadFileInfo : NSObject
-
+/**
+ 是否流文件
+ */
+@property (nonatomic, readonly) BOOL isStreamFile;
+/**
+ 文件路径
+ */
 @property (nonatomic, copy) NSString* filePath;
+/**
+ oss的endpoint
+ */
 @property (nonatomic, copy) NSString* endpoint;
+/**
+ oss的bucket
+ */
 @property (nonatomic, copy) NSString* bucket;
+/**
+ oss的对象
+ */
 @property (nonatomic, copy) NSString* object;
+/**
+ vod具体信息
+ */
 @property (nonatomic, strong) VodInfo* vodInfo;
+/**
+ vod上传状态
+ */
 @property VODUploadFileStatus state;
 
 @end
 
+@class UploadStreamFileInfo;
+/**
+ 流文件回调
+ */
+@protocol UploadStreamFileInfoDelegate <NSObject>
+@optional
+/**
+ 流文件大小发生改变
+ @param fileInfo 流文件信息
+ @param size 当前大小，Byte
+ */
+- (void) onUploadStreamFileInfo:(UploadStreamFileInfo *)fileInfo sizeChange:(NSUInteger)size;
+/**
+ 上传进度发生改变
+ @param fileInfo 流文件信息
+ @param uploadSize 当前已经上传的大小，Byte
+ */
+- (void) onUploadStreamFileInfo:(UploadStreamFileInfo *)fileInfo uploadProgress:(NSUInteger)uploadSize;
+@end
+
+@interface UploadStreamFileInfo : UploadFileInfo
+/**
+ 上传回调
+ */
+@property (nonatomic, weak) id<UploadStreamFileInfoDelegate> delegate;
+/**
+ 分片大小，Byte，至少100KB
+ */
+@property (nonatomic, readonly) NSUInteger partSize;
+/**
+ 首片分片大小，Byte，至少100KB
+ */
+@property (nonatomic, readonly) NSUInteger optimizeFirstPartSize;
+/**
+ 当前文件偏移
+ */
+@property (nonatomic, readonly) NSUInteger currentOffset;
+/**
+ 当前文件大小，Byte
+ */
+@property (nonatomic, readonly) NSUInteger currentSize;
+/**
+ 当前文件是否已经完整
+ */
+@property (nonatomic, readonly) BOOL isFileComplete;
+/**
+ 文件大小（byte)；文件完整前未确定
+ */
+@property (nonatomic, readonly) NSUInteger fileSize;
+/**
+ 当前已经上传的大小（byte）
+ */
+@property (nonatomic, readonly) NSUInteger hasUploadedSize;
+
+/**
+ 初始化流文件
+ 
+ @param fileName 文件名
+ @param partSize 分段大小
+ @param firstPartSize 首段优化大小（默认可以跟partSize一样）
+ */
+- (instancetype) initWithFileName:(NSString *)fileName
+                         partSize:(NSUInteger)partSize
+            optimizeFirstPartSize:(NSUInteger)firstPartSize;
+
+/**
+ 添加流数据
+ 
+ @param buffer 流数据
+ */
+- (void) appendBuffer:(NSData *)buffer;
+
+/**
+ 跳到某个位置
+ 
+ @param offset 偏移位置
+ */
+- (void) seek:(NSUInteger)offset;
+
+/**
+ 标记文件已经完成了（不再调用appendBuffer:）了
+ */
+- (void) fileComplete;
+@end
 
 @interface VodUploadResult: NSObject
 @property (nonatomic, copy) NSString* videoId;
