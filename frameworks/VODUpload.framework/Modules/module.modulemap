@@ -1,0 +1,6 @@
+framework module VODUpload {
+  umbrella header "VODUploadClient.h"
+
+  export *
+  module * { export * }
+}
